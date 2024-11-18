@@ -1,0 +1,95 @@
+{% include "home/layout3.html" %}
+{% load static %}
+
+{%block content%}
+
+<style>
+
+    body {
+        background-image: url("{% static '/images/foods.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .header {
+        text-align: center;
+        margin-top: 30px;
+        color: #ffff00;
+    }
+
+    .container {
+        margin-top: 20px;
+        border: 5px double black;
+        border-radius: 20px;
+        width: 95%;
+        max-width: 480px;
+        margin: 0;
+        background-color: white;
+    }
+
+    .container:hover {
+        border: 5px double #e9fb44;
+        background-color: #979797;
+        color: #e9fb44;
+    }
+
+    .header-info {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .pic-model {
+        text-align: center;
+    }
+
+    .user-info {
+        margin-top: 20px;
+    }
+
+    .content-upgrade {
+        overflow: auto;
+        height: calc(100% - 190px);
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+    }
+</style>
+<div class="content-upgrade">
+    <div class="header">
+        <h1><img src="{% static '/images/king-model.png' %}" alt="Avatar" width="70px" height="70px" style="margin-bottom: 25px;">UPGRADE USER</h1>
+    </div>
+    <form class="container" method="POST" id="form">
+        <div onclick="changecost()">
+            {% csrf_token %}
+            <div class="header-info">
+                <h1>GOLD</h1>
+            </div>
+            <div class="pic-model">
+                <img src="{% static '/images/kinguser.png' %}" alt="Avatar" width="200px" height="200px">
+            </div>
+            <div class="user-info">
+                <h7>Privilege</h7>
+                <br>
+                <h7>- use (ML) machine learning food model</h7>
+                <br>
+                <br>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    function changecost(event) {
+        document.getElementById("form").submit()
+        // const Vcost = Gold;
+        // Swal.fire({
+        //         icon: 'success',
+        //         title: 'Success you Upgrade user',
+        //         text: 'Your work has been saved',
+        //       }).then(function(result) {
+        //         document.getElementById('form').submit();
+        //       })
+    }
+</script>
+
+{% endblock %}
